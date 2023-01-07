@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from 'react';
+import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
+import { routes } from './routes';
+import { useStyles } from './styles';
+import { ERoutes } from './types/enums';
 
-function App() {
+const App: FC = () => {
+  useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to={ERoutes.search} replace />} />
+        {routes.map(({ component: Component, path }) => (
+          <Route key={path} path={path} element={<Component />} />
+        ))}
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
