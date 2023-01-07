@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useCallback } from 'react';
+import { useLocation } from 'react-router';
 import { getSearchItemRequest } from './actions';
 import { IGeneralMessage } from 'src/types/global';
 import {
@@ -30,3 +31,10 @@ export function useGetSearchItem(): (id: string) => void {
     [dispatch]
   );
 }
+
+export const useSelectRouterPathSearchItemID: () => string = () => {
+  const { pathname } = useLocation();
+  const pathNameArray: string[] = pathname.split('/');
+  const path = pathNameArray[pathNameArray.length - 1];
+  return path;
+};

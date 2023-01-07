@@ -4,11 +4,11 @@ import { Image } from 'src/shared/image/image';
 import {
   useGetSearchItem,
   useSelectSearchItem,
-  useSelectSearchItemLoading
+  useSelectSearchItemLoading,
+  useSelectRouterPathSearchItemID
 } from 'src/store/search-item/hooks';
 import { ISearchItem } from 'src/store/search-item/types';
 import { ERoutes } from 'src/types/enums';
-import { useSelectRouterPathSearchItemID } from './hooks';
 import { useStyles } from './styles';
 
 export const SearchItemPage: FC = () => {
